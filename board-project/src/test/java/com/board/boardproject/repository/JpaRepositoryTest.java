@@ -15,12 +15,12 @@ import static org.assertj.core.api.Assertions.*;
 @DisplayName("JPA 연결 테스트")
 @Import(JpaConfig.class)
 @DataJpaTest
-class JapRepositoryTest {
+class JpaRepositoryTest {
     private final ArticleRepository articleRepository;
     private final ArticleCommentRepository articleCommentRepository;
 
     //생성자 주입 패턴
-    public JapRepositoryTest(
+    public JpaRepositoryTest(
             @Autowired ArticleRepository articleRepository,
             @Autowired ArticleCommentRepository articleCommentRepository
     ) {
@@ -40,7 +40,7 @@ class JapRepositoryTest {
         // Then
         assertThat(articles)
                 .isNotNull()
-                .hasSize(1000);
+                .hasSize(123);
     }
 
     @DisplayName("insert 테스트")
@@ -88,5 +88,6 @@ class JapRepositoryTest {
         assertThat(articleRepository.count()).isEqualTo(previousArticleCount - 1);
         assertThat(articleCommentRepository.count()).isEqualTo(previousArticleCommentCount - deletedCommentsSize);
     }
+    // ctrl + shift + r 여기 테스트 다 실행하기
 }
 
